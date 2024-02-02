@@ -39,6 +39,9 @@ export function binary_to_hexa(bin){
         }
         return_str+=prep_str;
     }
+    if (Number(bin)==0){
+        return 0;
+    }
     return_str = reverse_string(return_str);
     return return_str;
 }

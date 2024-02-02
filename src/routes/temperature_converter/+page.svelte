@@ -10,7 +10,7 @@ import { number_checker,
 
 $: input_celsius = 0;
 $: input_fahrenheit = 89.6;
-$: input_kelvin = 273;
+$: input_kelvin = 273.15;
 
 $: web_loop = (event) =>{
     let target_id = event.target.id;

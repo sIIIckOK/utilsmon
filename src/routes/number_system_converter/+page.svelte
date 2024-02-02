@@ -19,10 +19,10 @@ import { binary_checker,
     octal_to_hexa
 } from './funcs';
 
-$: input_binary = 0;
-$: input_decimal = 0;
-$: input_octal = 0;
-$: input_hexa = 0; 
+$: input_binary = undefined;
+$: input_decimal = undefined;
+$: input_octal = undefined;
+$: input_hexa = undefined; 
 
 
 
