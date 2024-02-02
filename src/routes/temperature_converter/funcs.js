@@ -1,56 +1,71 @@
-//celsius
-export function celsius_to_fahrenheit(cel){
-    let temp_var = Number(cel);
-    temp_var = Number((temp_var*(9/5)+32).toFixed(2))
-    if (Number.isNaN(temp_var)){
-        return 0
+import { hasContext } from "svelte";
+
+//////////
+export function cel_to_fah(cel){
+    let temp = Number(cel);
+    let fah = (temp*(9/5)+32).toFixed(2); 
+    if (Number(fah) == 0){
+        return 0;
     }
-    return (temp_var*(9/5)+32);
+    return fah;
 }
 
-export function celsius_to_kelvin(cel){
-    let temp_var = Number(cel);
-    temp_var = Number((temp_var+273.).toFixed(2));
-    if (Number.isNaN(temp_var)){
-        return 0
+export function fah_to_cel(fah){
+    let temp = Number(fah);
+    let cel = ((temp-32)*(5/9)).toFixed(2); 
+    if (Number(cel) == 0){
+        return 0;
     }
-    return(temp_var);
+    return cel;
 }
 
-//fahrenheit
-export function fahrenheit_to_kelvin(fah){
-    let temp_var = fahrenheit_to_celsius(fah);
-    temp_var = Number(celsius_to_kelvin(temp_var).toFixed(2));
-    if (Number.isNaN(temp_var)){
-        return 0
+export function cel_to_kel(cel){
+    let temp = Number(cel);
+    let kel = (temp+273.15).toFixed(2); 
+    if (Number(kel) == 0){
+        return 0;
     }
-    return temp_var;
+    return kel;
 }
 
-export function fahrenheit_to_celsius(fah){
-    let temp_var = Number(fah);
-    temp_var = Number(((temp_var-32)*(5/9)).toFixed(2));
-    if (Number.isNaN(temp_var)){
-        return 0
+export function fah_to_kel(fah){
+    let cel = fah_to_cel(fah);
+    let kel = cel_to_kel(cel); 
+    let temp = Number(kel).toFixed(2);
+    if (Number(kel) == 0){
+        return 0;
     }
-    return temp_var;
+    return temp;
 }
 
-//kelvin
-export function kelvin_to_celsius(kel = 0){
-    let temp_var = Number(kel);
-    temp_var = Number((temp_var-273).toFixed(2));
-    if (Number.isNaN(temp_var)){
-        return 0
+export function kel_to_cel(kel){
+    let temp = Number(kel);
+    let cel = (temp-273.15).toFixed(2); 
+    if (Number(kel) == 0){
+        return 0;
     }
-    return temp_var;
+    return cel;
 }
 
-export function kelvin_to_fahrenheit(kel){
-    let temp_var = kelvin_to_celsius(kel);
-    temp_var = Number(celsius_to_fahrenheit(temp_var).toFixed(2));
-    if (Number.isNaN(temp_var)){
-        return 0
+export function kel_to_fah(kel){
+    let temp = Number(kel);
+    let cel = (temp-273.15).toFixed(2); 
+    let fah = cel_to_fah(cel);
+    if (Number(fah) == 0){
+        return 0;
     }
-    return temp_var;
+    return fah;
 }
+
+//Checker
+export function number_checker(num){
+    let str = String(num);
+    if (Number.isNaN(Number(num))){
+        str = str.slice(0,str.length-1);
+    }
+    return str;
+}
+
+
+
+

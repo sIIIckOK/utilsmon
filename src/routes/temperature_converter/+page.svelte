@@ -1,12 +1,12 @@
 <script>
 import Navbar from "$lib/Navbar.svelte";
-import { fahrenheit_to_celsius, 
-    fahrenheit_to_kelvin, 
-    celsius_to_fahrenheit, 
-    celsius_to_kelvin, 
-    kelvin_to_celsius,
-    kelvin_to_fahrenheit 
-} from "./funcs.js";
+import { number_checker, 
+    cel_to_fah, 
+    cel_to_kel, 
+    fah_to_cel, 
+    fah_to_kel, 
+    kel_to_cel, 
+    kel_to_fah } from "./funcs.js";
 
 $: input_celsius = 0;
 $: input_fahrenheit = 89.6;
@@ -16,18 +16,21 @@ $: web_loop = (event) =>{
     let target_id = event.target.id;
 
     if (target_id == "celsius"){
-        input_fahrenheit = celsius_to_fahrenheit(input_celsius);
-        input_kelvin = Number(celsius_to_kelvin(input_celsius));
+        input_celsius = number_checker(input_celsius);
+        input_fahrenheit = cel_to_fah(input_celsius);
+        input_kelvin = cel_to_kel(input_celsius);
     }
 
     if (target_id == "fahrenheit"){
-        input_celsius = fahrenheit_to_celsius(input_fahrenheit);
-        input_kelvin = fahrenheit_to_kelvin(input_fahrenheit);
+        input_fahrenheit = number_checker(input_fahrenheit);
+        input_celsius = fah_to_cel(input_fahrenheit);
+        input_kelvin = fah_to_kel(input_fahrenheit);
     }
 
     if (target_id == "kelvin"){
-        input_celsius= kelvin_to_celsius(input_kelvin);
-        input_fahrenheit = kelvin_to_fahrenheit(input_kelvin);
+        input_celsius = number_checker(input_kelvin);
+        input_celsius= kel_to_cel(input_kelvin);
+        input_fahrenheit = kel_to_fah(input_kelvin);
     }
 }
 
